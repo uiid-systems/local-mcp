@@ -3,16 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Local MCP server for accessing personal agents",
-  "main": "dist/server.js",
+  "main": "server.mjs",
   "scripts": {
-    "build": "tsup",
-    "start": "node dist/server.js",
-    "dev": "tsup --watch"
-  },
-  "devDependencies": {
-    "@types/node": "^22.0.0",
-    "tsup": "^8.0.0",
-    "typescript": "^5.7.0"
+    "start": "node server.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0"
