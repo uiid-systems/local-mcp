@@ -8,13 +8,16 @@ import { readFileSync, readdirSync, existsSync } from "fs"
 import { join, resolve, basename } from "path"
 import { homedir } from "os"
 
+const __dirname = new URL(".", import.meta.url).pathname
+const pkg = JSON.parse(readFileSync(join(__dirname, "package.json"), "utf-8"))
+
 const AGENTS_DIR = resolve(
-  new URL(".", import.meta.url).pathname,
+  __dirname,
   process.env.AGENTS_DIR || "agents"
 ).replace(/^~(?=\/|$)/, homedir())
 
 const server = new Server(
-  { name: "local-mcp", version: "1.0.0" },
+  { name: "local-mcp", version: pkg.version },
   { capabilities: { tools: {} } }
 )
 
