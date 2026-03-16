@@ -1,12 +1,17 @@
 {
   "name": "@uiid/local-mcp-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "Local MCP server for accessing personal agents",
   "main": "server.mjs",
   "bin": {
     "local-mcp-server": "cli.mjs"
   },
+  "files": [
+    "cli.mjs",
+    "server.mjs",
+    "agents/"
+  ],
   "scripts": {
     "start": "node server.mjs"
   },
