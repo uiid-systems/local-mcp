@@ -9,25 +9,18 @@ A local MCP server that exposes agent markdown files as tools. Agents are prompt
 | `list_agents` | List all available agents |
 | `read_agent` | Read the full content of a specific agent by name |
 
-## Setup
+## Install
 
 ```bash
-npm install
+npx @uiid/local-mcp-server
 ```
 
-### Claude Code
+This adds the server to your Claude Code settings (`~/.claude/settings.json`). Restart Claude Code to activate.
 
-Add to your MCP settings (e.g., `~/.claude/settings.json`):
+### Uninstall
 
-```json
-{
-  "mcpServers": {
-    "local-mcp": {
-      "command": "node",
-      "args": ["/path/to/local-mcp-server/server.mjs"]
-    }
-  }
-}
+```bash
+npx @uiid/local-mcp-server --uninstall
 ```
 
 ## Agents directory
