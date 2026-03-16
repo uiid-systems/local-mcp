@@ -13,7 +13,8 @@ Convert an approved plan or PRD into a structured set of Linear tickets that ser
 ## Inputs
 
 1. **Plan/PRD/Specification** — document describing the work (Notion link, markdown, or pasted content)
-2. **Context** — any constraints, architectural patterns, or project-specific guidance (optional)
+2. **Target status** — all tickets created by this agent must be set to **Todo**.
+3. **Context** — any constraints, architectural patterns, or project-specific guidance (optional)
 
 ## Output
 
@@ -34,6 +35,15 @@ Your job is to **read the work and determine the right breakdown structure**, no
 
 If layers, dependencies, and constraints don't apply to the work, use a simpler structure. Prioritize **clarity and executability** over rigid taxonomy.
 
+### Sizing
+
+A well-sized ticket has a **single, cohesive concern** that can be scoped in 2–3 sentences. Use these heuristics:
+
+- If you can't describe the scope in 2–3 sentences, the ticket is too big — split it.
+- If the ticket would touch 5+ unrelated files across different concerns, it's too big.
+- If the ticket is a single trivial change with no meaningful review surface, merge it into an adjacent ticket.
+- Err on the side of slightly larger tickets with clear scope over many tiny tickets with coordination overhead.
+
 ## Steps
 
 ### Step 1: Read the Plan Completely
@@ -53,18 +63,20 @@ Ask yourself:
 | **Do tickets have hard dependencies (one blocks another)?** | Make dependencies explicit in ticket relationships | Tickets are independent or loosely coupled |
 | **Are there hard rules that must be satisfied?** | Call them out as constraint rules to verify in exit criteria | Evaluate constraints naturally as you break down |
 
-### Step 3: Create a Parent Ticket or Project (if needed)
+### Step 3: Create a Linear Project
 
-If breaking into 3+ tickets, create a parent ticket or Linear project that:
+If breaking into 3+ tickets, create a **Linear project** (not a parent ticket with sub-tasks) that:
 - Links to the original plan/PRD
 - Serves as the hub for all related work
 - Provides context for why this breakdown exists
 
-For smaller breakdowns (2 tickets), you can skip this.
+**Always prefer projects with standalone tickets over tickets with sub-tasks.** Sub-tasks create unnecessary nesting and are harder to track, filter, and assign independently.
 
-### Step 4: Create Child Tickets
+For smaller breakdowns (2 tickets), you can skip the project.
 
-Create tickets in **logical execution order** (dependencies flow top to bottom).
+### Step 4: Create Tickets
+
+Create tickets in **logical execution order** (dependencies flow top to bottom). Add them to the project created in Step 3.
 
 For each ticket, determine:
 - **Scope** — what is this ticket responsible for?
@@ -76,16 +88,9 @@ For each ticket, determine:
 
 After all tickets are created and their IDs exist, set native Linear issue relations for any dependencies identified in Step 2. Use `blocks` / `blockedBy` relations — do not document dependencies as text in ticket descriptions, as text drifts out of sync with the actual relations.
 
-### Step 6: Verify Structural Rules
+### Step 6: Verify
 
-Check that your breakdown satisfies:
-
-- [ ] Every ticket has a clear, singular responsibility
-- [ ] Every ticket has acceptance criteria and definition of done
-- [ ] Dependencies are set as native Linear relations, not description text
-- [ ] All tickets link back to the original plan/PRD
-- [ ] No ticket is so large that it should be broken down further
-- [ ] If there are hard constraints, they're documented and will be verifiable
+Run through the **Exit Criteria** checklist at the bottom of this document. Fix any violations before finishing.
 
 ## Ticket Template
 
@@ -157,3 +162,5 @@ Dependencies are managed as native Linear issue relations, not as text in the de
 - **Think like a builder.** Would you want to pick up this ticket and know exactly what to do? If not, it needs more clarity.
 - **Use native relations for dependencies.** Set `blocks` / `blockedBy` via the Linear API — never put dependency info in description text.
 - **Link everything back.** Every ticket should reference the original plan so context is preserved.
+- **Use projects, not sub-tasks.** Always create a Linear project with standalone tickets. Never create parent tickets with sub-tasks.
+- **Never set status to Triage.** Triage is for unprocessed incoming work. All tickets from this agent are set to **Todo**.
