@@ -83,7 +83,13 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   }
 
   if (name === "read_agent") {
-    const agentName = args.agent_name
+    const agentName = args?.agent_name
+    if (typeof agentName !== "string" || !agentName.trim()) {
+      return {
+        content: [{ type: "text", text: "Error: agent_name is required." }],
+        isError: true,
+      }
+    }
 
     // Sanitize: use only the basename to prevent path traversal
     const safe = basename(agentName)

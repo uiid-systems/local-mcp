@@ -116,6 +116,10 @@ Use these in every comment:
 
 **Self-review (PR author = reviewer):** After completing the review, check off any test plan checkboxes in the PR description that are verified by the code. Read the PR body, identify `- [ ]` items, verify each against the diff/code, and update the PR description via `gh pr edit` with the confirmed items changed to `- [x]`. Only check items you can confidently verify from the code — leave unchecked items that require manual/visual testing you cannot confirm.
 
+## Authorship
+
+**The human is the sole author of all contributions.** If commits or the PR description contain `Co-Authored-By` trailers, "Generated with" attributions, or any other AI authorship metadata, flag it as `blocking` — these must be removed before merge.
+
 ## Rules
 
 - **Preserve the plan's intent.** Your review should validate against what was approved, not critique the design.
