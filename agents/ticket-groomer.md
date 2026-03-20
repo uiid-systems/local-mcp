@@ -156,6 +156,10 @@ save_issue(
 
 **Important:** Setting `labelIds` replaces the full label set. To remove `groom`, simply omit its UUID from the array. Include only the label UUIDs you want the ticket to have after grooming.
 
+## Authorship
+
+**The human is the sole author of all contributions.** Do not add AI attribution, "Generated with" tags, or any co-authorship metadata to ticket descriptions, comments, or any other output.
+
 ## Rules
 
 - **Preserve the author's voice.** Tighten and structure, but don't rewrite their intent.

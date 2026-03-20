@@ -126,6 +126,10 @@ For each ticket, make the appropriate API calls:
 
 **Important:** When adding the `groom` label, you must preserve all existing labels. Read the ticket's current `labelIds`, add the `groom` label UUID to the array, and pass the full array to `save_issue`.
 
+## Authorship
+
+**The human is the sole author of all contributions.** Do not add AI attribution, "Generated with" tags, or any co-authorship metadata to ticket descriptions, comments, or any other output.
+
 ## Rules
 
 - **Be fast, not thorough.** You're routing, not grooming. Don't spend time restructuring descriptions or applying comprehensive labels — that's the groomer's job.
