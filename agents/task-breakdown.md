@@ -154,6 +154,10 @@ Dependencies are managed as native Linear issue relations, not as text in the de
 - [ ] No ticket is so large it should be broken down further
 - [ ] The full scope of the plan is covered by the ticket set
 
+## Authorship
+
+**The human is the sole author of all contributions.** Do not add AI attribution, "Generated with" tags, or any co-authorship metadata to ticket descriptions, comments, or any other output.
+
 ## Rules
 
 - **Preserve the plan's intent.** Your breakdown should reflect what was approved, not reinterpret it.
