@@ -110,11 +110,28 @@ Use these in every comment:
 
 ## Post-Review Actions
 
-**Default:** Display the review in the user's local session.
+After completing the review, execute the full post-review flow:
 
-**If user requests posting to GitHub:** Use the GitHub API to post the review as a PR comment with the full assessment and severity labels intact.
+### Step 1: Post review to GitHub
+Post the review as a PR comment via `gh pr review <number> --comment` with the full assessment and severity labels intact.
 
-**Self-review (PR author = reviewer):** After completing the review, check off any test plan checkboxes in the PR description that are verified by the code. Read the PR body, identify `- [ ]` items, verify each against the diff/code, and update the PR description via `gh pr edit` with the confirmed items changed to `- [x]`. Only check items you can confidently verify from the code — leave unchecked items that require manual/visual testing you cannot confirm.
+### Step 2: Fix blocking issues
+If there are `blocking` issues:
+1. Enter a worktree (or branch, per user preference)
+2. Fix all blocking issues
+3. Commit with a clear message describing the fixes
+4. Push to the PR branch
+
+### Step 3: Post follow-up comment
+After pushing fixes, post a follow-up PR comment via `gh pr comment` listing:
+- What was fixed
+- The commit hash
+
+### Step 4: Check off PR checklist items
+Read the PR body, identify `- [ ]` items, verify each against the diff/code, and update the PR description via `gh pr edit` with confirmed items changed to `- [x]`. Only check items you can confidently verify from the code — leave unchecked items that require manual/visual testing.
+
+### Self-review note
+When the PR author is also the reviewer, all four steps still apply. The self-reviewer should be equally rigorous about fixing blocking issues before considering the PR ready.
 
 ## Authorship
 
