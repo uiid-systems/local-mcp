@@ -1,4 +1,4 @@
-# @uiid/local-mcp-server
+# @uiid/local-mcp
 
 A local MCP server that exposes agent markdown files as tools. Agents are prompt documents that define how an AI assistant should handle specific tasks (code review, PR creation, ticket grooming, etc.).
 
